@@ -12,7 +12,8 @@
       return{
         showBlock: false,
         timer: null,
-        reactionTime: 0
+        reactionTime: 0,
+        averageTime: null
       }
     },
     methods:{
@@ -25,7 +26,7 @@
         clearInterval(this.timer)
         console.log(this.reactionTime)
         this.$emit('close', this.reactionTime)
-        this.$data
+
       }
     },
     mounted() {

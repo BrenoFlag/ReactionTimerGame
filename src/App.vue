@@ -3,7 +3,7 @@
     <h1>How fast is your reaction time?</h1>
     <button @click="start()" :disabled="isPlaying">Start</button>
     <BlockComponent :delay="delay" v-if="isPlaying" @close="gameOver"></BlockComponent>
-    <results-component v-if="playedOnce & !isPlaying" :score="score"></results-component>
+    <results-component v-if="playedOnce & !isPlaying" :score="score" :reactionTimeSum="reactionTimeSum" :timesPlayed="timesPlayed"></results-component>
   </div>
 
 </template>
@@ -23,7 +23,9 @@ export default {
       isPlaying: false,
       playedOnce: false,
       delay: null,
-      score: null
+      score: null,
+      reactionTimeSum: 0,
+      timesPlayed: 0,
     }
   },
   methods:{
@@ -35,6 +37,8 @@ export default {
     gameOver(score){
       this.score = score
       this.isPlaying = false
+      this.timesPlayed++
+      this.reactionTimeSum += score
     }
   }
 }
